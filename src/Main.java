@@ -1,8 +1,12 @@
 import static java.lang.Integer.parseInt;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println(calc("X+X"));
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter expression:");
+        String str = in.nextLine();
+        System.out.println(calc(str));
     }
 
     public static String calc(String input) throws Exception {
@@ -49,9 +53,12 @@ public class Main {
                 break;
         }
         if (rom) {
-            if (output >= 0) {
+            if (output > 0) {
                 stroutput = getRom(output);
+            } else {
+                throw new Exception("Roman numbers cannot be negative or equal to zero");
             }
+
         } else {
             stroutput = String.valueOf(output);
         }
